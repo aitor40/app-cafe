@@ -1,4 +1,5 @@
-import { AppSuperiorBar } from '../components';
+import { Box, Toolbar } from '@mui/material';
+import { AppSidebarMenu, AppSuperiorBar } from '../components';
 
 export const MainLayout = ({ children }) => {
 
@@ -8,8 +9,15 @@ export const MainLayout = ({ children }) => {
     return (
         <>
             <AppSuperiorBar drawerWidth={ drawerWidth } />
-            <h1>Main Layout</h1>
-            { children }
+            <AppSidebarMenu drawerWidth={ drawerWidth } />
+            <Box sx={{
+                width: { sm: 'calc( 100% - '+drawerWidth+'px)' },
+                marginLeft: { sm: drawerWidth+'px' },
+                padding: '0 25px'
+            }}>
+                <Toolbar />
+                { children }
+            </Box>
         </>
     )
 }
